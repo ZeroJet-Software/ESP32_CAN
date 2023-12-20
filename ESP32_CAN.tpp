@@ -39,7 +39,7 @@
 #include "soc/dport_reg.h"
 #include "driver/gpio.h"
 
-TaskHandle_t CANBUS_TASK = NULL;
+static TaskHandle_t CANBUS_TASK = NULL;
 
 static void _CAN_TASK(void * parameter) {
   while(1) {
