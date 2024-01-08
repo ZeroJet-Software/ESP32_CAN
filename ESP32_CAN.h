@@ -145,6 +145,7 @@ class ESP32_CAN_Base {
     virtual void tx_task() = 0;
     virtual uint8_t error_report() = 0;
     volatile uint8_t error = 0;
+    TaskHandle_t CANBUS_TASK;
 };
 
 static ESP32_CAN_Base* _CAN = nullptr;
@@ -174,7 +175,7 @@ ESP32_CAN_CLASS class ESP32_CAN : public ESP32_CAN_Base {
     uint8_t error_report();
 
   private:
-    TaskHandle_t CANBUS_TASK;
+//    TaskHandle_t CANBUS_TASK;
     Circular_Buffer<uint8_t, (uint32_t)_rxSize, sizeof(CAN_message_t)> rxBuffer;
     Circular_Buffer<uint8_t, (uint32_t)_txSize, sizeof(CAN_message_t)> txBuffer;
     void struct2queueTx(const CAN_message_t &msg);
